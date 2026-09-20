@@ -1,0 +1,77 @@
+{
+  "version": 0,
+  "terms": [
+    {
+      "id": "pseudophakia",
+      "term": "pseudophakia",
+      "aliases": ["pseudophakic", "PCIOL", "posterior chamber IOL"],
+      "spoken": ["sudo fake ia", "pseudo fakia"],
+      "gloss": "Eye with an implanted intraocular lens after cataract surgery.",
+      "sections": ["od.anterior.lensMedia", "os.anterior.lensMedia"],
+      "boost": 2.5
+    },
+    {
+      "id": "shafers-sign",
+      "term": "Shafer's sign",
+      "aliases": ["tobacco dust", "pigment in anterior vitreous"],
+      "spoken": ["shaffer sign", "schafer sign"],
+      "gloss": "Pigment cells in the anterior vitreous; suggests retinal break.",
+      "sections": ["od.posterior.media", "os.posterior.media"],
+      "boost": 3.0
+    },
+    {
+      "id": "od",
+      "term": "OD",
+      "aliases": ["oculus dexter", "right eye"],
+      "spoken": ["o d", "oh dee"],
+      "gloss": "Right eye.",
+      "sections": ["od"],
+      "boost": 3.0
+    },
+    {
+      "id": "os",
+      "term": "OS",
+      "aliases": ["oculus sinister", "left eye"],
+      "spoken": ["o s", "oh ess"],
+      "gloss": "Left eye.",
+      "sections": ["os"],
+      "boost": 3.0
+    },
+    {
+      "id": "ou",
+      "term": "OU",
+      "aliases": ["oculus uterque", "both eyes", "bilaterally"],
+      "spoken": ["o u", "oh you"],
+      "gloss": "Both eyes.",
+      "sections": ["od", "os"],
+      "boost": 3.0
+    },
+    {
+      "id": "cd-ratio",
+      "term": "C/D ratio",
+      "aliases": ["cup to disc ratio", "cup-disc ratio"],
+      "spoken": ["c d ratio", "see dee ratio"],
+      "gloss": "Cup-to-disc ratio of the optic nerve head, 0.0-1.0.",
+      "sections": ["od.posterior.cdRatio", "os.posterior.cdRatio"],
+      "boost": 2.5
+    },
+    {
+      "id": "wnl",
+      "term": "WNL",
+      "aliases": ["within normal limits"],
+      "spoken": ["w n l", "double you en el"],
+      "gloss": "Within normal limits. A blanket WNL never populates individual fields.",
+      "sections": ["od.anterior.status", "os.anterior.status", "od.posterior.status", "os.posterior.status"],
+      "boost": 2.0
+    },
+    {
+      "id": "iop",
+      "term": "IOP",
+      "aliases": ["intraocular pressure", "tension"],
+      "spoken": ["i o p", "eye oh pee"],
+      "gloss": "Intraocular pressure in mmHg.",
+      "sections": ["plan.testing.tonometry"],
+      "boost": 2.5
+    }
+  ]
+}

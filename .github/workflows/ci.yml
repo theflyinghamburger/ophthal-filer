@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: typecheck / lint / test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # Windows is the delivery target; Linux is the fast signal.
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      # The committed .npmrc pins the npm cache to the developer's H: drive so
+      # nothing touches C: on the build workstation. That path does not exist
+      # on a runner, so override it from the command line, which beats .npmrc.
+      - name: Install
+        run: npm ci --cache "${{ runner.temp }}/npm-cache"
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
+
+      # The acceptance criterion from #1: the CLI must list all its verbs.
+      - name: CLI help
+        run: node bin/ophtha-scribe.mjs --help

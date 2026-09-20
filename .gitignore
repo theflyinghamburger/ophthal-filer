@@ -20,9 +20,13 @@ logs/
 # Large binary assets. Fetched by `ophtha-scribe assets fetch`, kept on-disk
 # beside the repo (never on C:), never in git.
 # ---------------------------------------------------------------------------
-assets/models/
-assets/bin/
-assets/form/background-*.png
+assets/models/*
+!assets/models/.gitkeep
+assets/bin/*
+!assets/bin/.gitkeep
+assets/form/*
+!assets/form/.gitkeep
+!assets/form/field-manifest.json
 
 # local config / secrets
 .env
