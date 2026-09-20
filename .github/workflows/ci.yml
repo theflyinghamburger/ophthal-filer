@@ -54,6 +54,19 @@ jobs:
       - name: Build
         run: npm run build
 
+      # ARCHITECTURE.md §6.4: five artefacts are generated from
+      # src/schema/form-schema.ts and none is hand-maintained. Regenerate and
+      # fail on any difference - a drifted field silently drops a clinical
+      # finding.
+      - name: Schema codegen
+        run: npm run schema:build
+
+      - name: Schema drift
+        run: npm run schema:check
+
+      - name: No uncommitted generated changes
+        run: git diff --exit-code
+
       # The acceptance criterion from #1: the CLI must list all its verbs.
       - name: CLI help
         run: node bin/ophtha-scribe.mjs --help

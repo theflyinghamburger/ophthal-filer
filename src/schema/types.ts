@@ -1,13 +1,9 @@
 /**
  * Core extraction vocabulary (ARCHITECTURE.md §6).
  *
- * Only the *load-bearing* shapes live here for now — the ones the rest of the
- * scaffold has to name. The full ~120-field `EncounterDraft` is a domain
- * problem to be worked through with the clinician.
- *
- * TODO(#3): expand into the complete form schema (`src/schema/form-schema.ts`)
- * and the codegen that derives zod schemas, per-section JSON Schema, GBNF
- * grammars, the PDF field manifest and the review-UI field list from it (§6.4).
+ * The cross-cutting shapes live here — the ones the rest of the pipeline has
+ * to name without depending on the field table. The chart itself is declared
+ * once in `./form-schema.ts` and every artefact is folded out of it (§6.4).
  */
 
 /**
@@ -66,15 +62,10 @@ export interface EncounterMeta {
 }
 
 /**
- * The structured chart draft: what Pass B produces and the doctor signs.
- *
- * TODO(#3): `od`, `os`, `assessment` and `plan` land here once the field list
- * is agreed. Keeping the type present but minimal means later stages can
- * already import the name without inventing a placeholder of their own.
+ * `EncounterDraft` — what Pass B produces and the doctor signs — is *derived*
+ * from the field table rather than declared, so it cannot drift from the
+ * generated artefacts. See `./form-schema.ts`, which re-exports it.
  */
-export interface EncounterDraft {
-  meta: EncounterMeta;
-}
 
 /** Which of Pass B's six sectioned calls a field belongs to (§5.6). */
 export const EXTRACTION_SECTIONS = [

@@ -1,0 +1,9 @@
+# Generated artefacts are written with LF and compared byte-for-byte by the
+# schema drift check (ARCHITECTURE.md §6.4). A CRLF checkout on the Windows
+# runner would make every regeneration look like drift, so pin the whole tree.
+* text=auto eol=lf
+*.png binary
+*.pdf binary
+*.wav binary
+*.onnx binary
+*.gguf binary

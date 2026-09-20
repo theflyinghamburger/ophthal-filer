@@ -23,11 +23,14 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "schema:build": "tsx src/schema/build.ts",
+    "schema:check": "tsx src/schema/build.ts --check",
     "test": "vitest run",
     "test:watch": "vitest"
   },
   "dependencies": {
-    "commander": "^14.0.1"
+    "commander": "^14.0.1",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

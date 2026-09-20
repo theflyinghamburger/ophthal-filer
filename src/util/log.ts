@@ -50,6 +50,8 @@ export const FIELD_KINDS = {
   llmModel: 'token',
   /** Application version. */
   appVersion: 'token',
+  /** Generated artefact path, e.g. `gbnf/od.anterior.gbnf`. Build tree, not PHI. */
+  artefact: 'token',
   /** Error class name or `code` — never `error.message`, which may quote input. */
   errName: 'token',
   /** Process exit code / HTTP status. */
