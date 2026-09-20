@@ -87,7 +87,7 @@ export interface LeafMeta {
   readonly unit?: string;
   /** §6.5 rule ids. TODO(#16): the validator resolves these. */
   readonly rules?: readonly string[];
-  /** Page of the paper form (1-based). TODO(#14): calibration confirms. */
+  /** Page of the paper form (1-based). TODO(#17): calibration confirms. */
   readonly page?: number;
   /** Assumption recorded against this field. TODO(#20): clinician confirms. */
   readonly assumption?: string;

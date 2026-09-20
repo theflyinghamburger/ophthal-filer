@@ -154,7 +154,7 @@ export function sectionJsonSchemas(): Record<ExtractionSection, JsonValue> {
  *
  * `rect` is `null` here by design: §3.4 measures rectangles against the
  * scanned background once, with the calibration harness.
- * TODO(#14): calibration fills `rect`; TODO(#17): `src/pdf/template.ts` places
+ * TODO(#17): calibration fills `rect`, and `src/pdf/template.ts` places
  * the widgets and `fill.ts` maps an `EncounterDraft` onto them by `name`.
  */
 export interface PdfField {
