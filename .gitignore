@@ -1,0 +1,36 @@
+# dependencies
+node_modules/
+.npm-cache/
+.corepack/
+
+# build output
+dist/
+build/
+*.tsbuildinfo
+
+# ---------------------------------------------------------------------------
+# PHI — never commit. Real dictations, gold labels, filled charts.
+# ---------------------------------------------------------------------------
+samples/
+eval/gold/
+out/
+logs/
+
+# ---------------------------------------------------------------------------
+# Large binary assets. Fetched by `ophtha-scribe assets fetch`, kept on-disk
+# beside the repo (never on C:), never in git.
+# ---------------------------------------------------------------------------
+assets/models/
+assets/bin/
+assets/form/background-*.png
+
+# local config / secrets
+.env
+.env.local
+*.local.json
+
+# editor / os
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
