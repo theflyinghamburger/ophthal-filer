@@ -17,6 +17,14 @@ jobs:
   check:
     name: typecheck / lint / test (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
+    # The committed .npmrc pins the npm cache to the developer's H: drive so
+    # nothing touches C: on the build workstation. That path does not exist on
+    # a runner, so redirect it here: an npm_config_* env var outranks .npmrc,
+    # and setting it job-wide keeps setup-node's cache step in agreement with
+    # npm itself.
+    env:
+      NPM_CONFIG_CACHE: ${{ github.workspace }}/.npm-cache
+
     strategy:
       fail-fast: false
       matrix:
@@ -31,11 +39,8 @@ jobs:
           node-version: 24
           cache: npm
 
-      # The committed .npmrc pins the npm cache to the developer's H: drive so
-      # nothing touches C: on the build workstation. That path does not exist
-      # on a runner, so override it from the command line, which beats .npmrc.
       - name: Install
-        run: npm ci --cache "${{ runner.temp }}/npm-cache"
+        run: npm ci
 
       - name: Typecheck
         run: npm run typecheck
