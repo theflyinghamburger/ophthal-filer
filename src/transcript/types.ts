@@ -14,6 +14,17 @@
 /** Who proposed an edit. */
 export type EditSource = 'repair' | 'lexicon' | 'laterality' | 'human';
 
+/**
+ * Tie-breaker when accepted edits collide: a doctor's correction always beats
+ * a machine's (§4's review loop starts with the human).
+ */
+export const EDIT_PRECEDENCE: Readonly<Record<EditSource, number>> = {
+  human: 3,
+  repair: 2,
+  laterality: 1,
+  lexicon: 0,
+};
+
 /** A verbatim-anchored replacement over the raw transcript. */
 export interface Edit {
   id: string;
@@ -54,12 +65,8 @@ export interface Transcript {
 
 /**
  * The materialized view: `raw` with accepted edits applied, plus the offset map
- * back to `raw`.
- *
- * TODO(#4): the edit applier (`src/transcript/apply.ts`) — sort by `rawStart`,
- * reject overlaps, materialize `working`, build the offset map. ~60 lines of
- * deterministic TypeScript, and §4 is explicit that it must be unit-tested
- * hard because everything downstream depends on it.
+ * back to `raw`. Derived, never stored — {@link import('./apply.js').workingOf}
+ * computes it from `raw` + accepted `edits`.
  */
 export interface WorkingTranscript {
   readonly transcript: Transcript;
